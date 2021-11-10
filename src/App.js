@@ -4,27 +4,34 @@ import Person from './components/Person'
 const App = () => {
   const [persons, setPersons] = useState([])
   const [newName, setNewName] = useState('')
+  const [newNumber, setNewNumber] = useState('')
 
   const addPerson = (event) => {
     event.preventDefault()
     // console.log(event.target);
     const personObject = {
       name: newName,
+      number: newNumber,
       id: Math.floor(Math.random() * 101),
     }
 
     if (persons.filter(person => person.name === personObject.name).length > 0){
-      console.log(persons.filter((person) => person.name === personObject.name))
+      // console.log(persons.filter((person) => person.name === personObject.name))
       alert(`${newName} is already added to phonebook`)
     } else {
 
       setPersons(persons.concat(personObject))
       setNewName('')
+      setNewNumber('')
     }
   }
 
   const handleNameChange = (event) => {
     setNewName(event.target.value)
+  }
+
+  const handleNumberChange = (event) => {
+    setNewNumber(event.target.value)
   }
 
   return (
@@ -33,6 +40,9 @@ const App = () => {
       <form onSubmit={addPerson}>
         <div>
           name: <input value={newName} onChange={handleNameChange} />
+        </div>
+        <div>
+          number: <input value={newNumber} onChange={handleNumberChange} />
         </div>
         <div>
           <button type='submit'>add</button>
