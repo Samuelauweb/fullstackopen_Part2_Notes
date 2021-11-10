@@ -10,7 +10,7 @@ const App = () => {
   ])
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
-  const [inputFilteredPerson, setInputFilteredPerson] = useState('')
+  const [search, setSearch] = useState('')
 
   const addPerson = (event) => {
     event.preventDefault()
@@ -34,16 +34,16 @@ const App = () => {
   }
 
   const filteredPerson = persons.filter((person) => {
-    console.log("test: ",person.name.toLowerCase().includes(inputFilteredPerson))
+    console.log("test: ",person.name.toLowerCase().includes(search))
     return (
-      person.name.toLowerCase().includes(inputFilteredPerson)
+      person.name.toLowerCase().includes(search)
       )
   }
   )
 
-  const handleInputFilteredPersonChange = (event) => {
+  const handleSearchChange = (event) => {
     console.log(event.target.value)
-    setInputFilteredPerson(event.target.value)
+    setSearch(event.target.value)
   }
 
   const handleNameChange = (event) => {
@@ -60,8 +60,8 @@ const App = () => {
       <div>
         filter shown with{' '}
         <input
-          value={inputFilteredPerson}
-          onChange={handleInputFilteredPersonChange}
+          value={search}
+          onChange={handleSearchChange}
         />
       </div>
       <h2>add a new person</h2>
