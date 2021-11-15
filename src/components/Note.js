@@ -6,8 +6,8 @@ const Note = ({ note, toggleImportance }) => {
   // "note.important" from db.json
 
   return (
-    <li>
-      {note.content}
+    <li className="note">
+      {note.content} {' '}
       <button onClick={toggleImportance}>{label}</button>
     </li>
   )
